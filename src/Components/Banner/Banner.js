@@ -4,6 +4,7 @@ import bannerImg1 from '../../images/banner1.jpg';
 import bannerImg2 from '../../images/banner2.jpg';
 import bannerImg3 from '../../images/banner3.jpg';
 const Banner = () => {
+    
   return (
     <div>
       <Carousel variant="dark">
