@@ -1,11 +1,11 @@
 import { getAuth } from "firebase/auth";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useAuthState} from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 const NavBar = () => {
   const auth = getAuth();
-  const user = auth?.currentUser;
-  const userName = user?.displayName;
+  const [user] = useAuthState(auth);
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -28,7 +28,7 @@ const NavBar = () => {
               <Nav.Link as={Link} eventKey="link-4" to="/inventory">
                 Inventory
               </Nav.Link>
-              <Nav.Link>{userName}</Nav.Link>
+              <Nav.Link>{user?.displayName}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

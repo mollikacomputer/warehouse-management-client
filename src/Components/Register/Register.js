@@ -1,29 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, verifyBeforeUpdateEmail, } from "firebase/auth";
+import app from "../../firebase.init";
 
 const auth = getAuth(app);
 const Register = () => {
   const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
 
   const handleUserNameBlur = (e) =>{
     setUsername(e.target.value);
   }
 
-  const [email, setEmail] = useState();
   const handleEmailBlur = (e) =>{
     setEmail(e.target.value);
   }
-  const [password, setPassword] = useState();
   const handlePasswordBlur = (e) =>{
     setPassword(e.target.value);
   }
-  
+  // console.log(username, password, email);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(result => {
+        const user = result.user;
+        console.log(user);
+        verifyBeforeUpdateEmail();
+    })
+    .catch(error => {
+        console.error(error)
+    })
+    console.log(username, password, email);
+  }
+
   return (
     <div className="w-75 mx-auto">
       <h2> Please Register</h2>
-      <Form onSubmit={handleCreateUser} >
+      <Form onSubmit={handleSubmit} >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
           <Form.Control onBlur={handleUserNameBlur} type="name" placeholder="Enter name" />

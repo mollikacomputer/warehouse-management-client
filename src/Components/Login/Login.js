@@ -8,13 +8,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+
   const notifyLogIn = () => toast("Login Successfully");
   const auth = getAuth(app);
   const [user, setUser] = useState('');
 
   const handleGoogleSignIn = () =>{
     const googleProvider = new GoogleAuthProvider();
-
     signInWithPopup(auth, googleProvider)
     .then((result) =>{
       const user = result.user;
@@ -31,6 +31,7 @@ const Login = () => {
     const auth = getAuth();
     signOut(auth)
     .then(() =>{
+    
     })
     .catch((error)=>{
       console.error(error)
@@ -48,11 +49,10 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <Button className="w-100" variant="primary" type="submit">
-          Sign In
-        </Button><br/>
-        <br/>
-      <button onClick={handleSignOut} className="btn btn-primary w-100" > Sign Out </button>
+        {
+          user ?<button onClick={handleSignOut} className="btn btn-primary w-100" > Sign Out </button> :
+          <Button className="w-100" variant="primary" type="submit"> Sign In </Button>
+        }
         <p> Are you New youser? <Link to='/register' >Register Now </Link>  </p>
       </Form><br/>
       <button onClick={handleGoogleSignIn} className="btn btn-primary" > SignIn with google </button>
