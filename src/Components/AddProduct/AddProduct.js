@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form} from "react-bootstrap";
+import { Button, Form} from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,7 +10,21 @@ const AddProduct = () => {
     fetch('http://localhost:5000/products')
     .then(res => res.json())
     .then(data => setProducts(data));
-  },[])
+  },[]);
+  const handleProductDelete = id =>{
+    const proseed = window.confirm('Are you sure want to delete?');
+    if(proseed){
+      console.log('deleting products with id', id);
+      const url = `http://localhost:5000/product/${id}`;
+      fetch(url, {
+        method:'DELETE'
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data);
+      })
+    }
+  }
   const handleAddProduct = event =>{
 
     event.preventDefault();
@@ -47,11 +61,6 @@ const AddProduct = () => {
         <div className=" my-5">
           <h2 className="text-primary my-5"> Add Product </h2>
           <Form onSubmit={handleAddProduct} >
-            {/* 
-            <Form.Group className="mb-3" controlId="formBasicId">
-              <Form.Control name="id" type="text" placeholder="Product Id" />
-            </Form.Group>
- */}
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Control
                 name="name"
@@ -98,7 +107,9 @@ const AddProduct = () => {
             <ToastContainer></ToastContainer>
           </Form>
           {
-            products.map( product => <li key={product.id}  >id : {product.id} Product Name : {product.name} Price : {product.price}  </li> )
+            products.map( product => <li key={product.id}  >id : {product.id} Product Name : {product.name} Price : {product.price}
+            <Button onClick={() => handleProductDelete(product._id)} variant="light" >X</Button>
+              </li> )
           }
         </div>
       </div>
