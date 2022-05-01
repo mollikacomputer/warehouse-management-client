@@ -1,34 +1,20 @@
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Products from "../Products/Products";
+import Update from "../Update/Update";
 
 const Inventory = () => {
 
   return (
-    <div >
+    <div>
       <Products></Products>
+      <Update></Update>
+      <Link to={'/addproduct'} >
+      <Button variant="outline-primary w-50" size="lg"> Add New Product </Button>
+      </Link>
+      
     </div>
   );
 };
 
 export default Inventory;
-
-/**
-<Row xs={1} md={2} lg={3} className="g-4">
-        
-          <Col>
-            {
-              products.map( product => <Card>
-                <Card.Img variant="top" src={product.picture} />
-                <Card.Body>
-                <Card.Title>
-                  {product.name}
-                </Card.Title>
-                <Card.Text>
-                  {product.price}
-                </Card.Text>
-                </Card.Body>
-              </Card> ,[])
-            }
-          </Col>
-        
-      </Row>
- */
