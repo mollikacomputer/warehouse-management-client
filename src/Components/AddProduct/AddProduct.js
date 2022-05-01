@@ -4,12 +4,12 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
   // load data from server to use UI
   useEffect(() => {
     fetch('http://localhost:5000/products')
     .then(res => res.json())
-    .then(data => setproducts(data));
+    .then(data => setProducts(data));
   },[])
   const handleAddProduct = event =>{
 
@@ -32,9 +32,11 @@ const AddProduct = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('success', data);
-      alert('Successfully adding new data to server', data);
+      const newProducts = [...products, data];
+      setProducts(newProducts);
+      // console.log('success', data);
       toast('Successfully adding new data to server', data);
+      event.target.reset();
       
     })
   } 
@@ -96,7 +98,7 @@ const AddProduct = () => {
             <ToastContainer></ToastContainer>
           </Form>
           {
-            products.map( product => <li key={product.id}  > Product Name : {product.name} Price : {product.price}  </li> )
+            products.map( product => <li key={product.id}  >id : {product.id} Product Name : {product.name} Price : {product.price}  </li> )
           }
         </div>
       </div>
