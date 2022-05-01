@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,7 +31,6 @@ const AddProduct = () => {
     }
   }
   const handleAddProduct = event =>{
-
     event.preventDefault();
     const name = event.target.name.value;
     const price = event.target.price.value;
@@ -110,9 +110,11 @@ const AddProduct = () => {
             <button type="submit" className="btn btn-primary w-100">Add Product Now</button>
             <ToastContainer></ToastContainer>
           </Form>
+
           {
             products.map( product => <li key={product.id}  >id : {product.id} Product Name : {product.name} Price : {product.price}
             <Button onClick={() => handleProductDelete(product._id)} variant="light" >X</Button>
+            <Link to={`/update/${product._id}`} > <button className="btn btn-light" >Update</button> </Link>
               </li> )
           }
         </div>

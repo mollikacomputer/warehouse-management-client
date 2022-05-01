@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Product from '../Product/Product';
 
 const Products = () => {
@@ -9,6 +10,7 @@ const Products = () => {
         .then((response) => response.json())
         .then((data) => setProducts(data));
     });
+    
     return (
         <div className="container">
         <h2 className='text-primary my-5' > Total Product Items : {products.length} </h2>
@@ -17,7 +19,8 @@ const Products = () => {
                 products.map( product => <Product
                 key = {product.id}
                 product = {product}
-                ></Product>)
+                >
+                </Product>)
             }
         </div>
         
