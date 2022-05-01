@@ -21,7 +21,11 @@ const AddProduct = () => {
       })
       .then(res => res.json())
       .then(data =>{
-        console.log(data);
+        if(data.deletedCount >0){
+          console.log('deleted');
+          const remaining = products.filter( product => product._id !== id);
+          setProducts(remaining);
+        }
       })
     }
   }
