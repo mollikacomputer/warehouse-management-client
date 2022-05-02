@@ -1,33 +1,97 @@
 import React, {useEffect, useState} from "react";
-import { Form } from "react-bootstrap";
+import { Form, ToastContainer } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Update = () => {
-  /* 
-    const {id} = useParams();
-    const [product, setProduct] = useState({});
-    useEffect(()=>{
-      const url = `http://localhost:5000/product/${id}`
-      fetch(url)
+
+  const {id} = useParams();
+  const [product, setProduct] = useState({});
+  useEffect(()=>{
+    const url = `http://localhost:5000/product/${id}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setProduct(data))
+  },[]);
+
+    const handleUpdateProduct = event =>{
+      event.preventDefault();
+      const name = event.target.name.value;
+      const price = event.target.price.value;
+      const description = event.target.description.value;
+      const quantity = event.target.quantity.value;
+      const supplier = event.target.supplier.value;
+      const picture = event.target.picture.value;
+      const updatedProduct = {name, price, description, quantity, supplier, picture};
+    
+      // console.log(product);
+      const url = `http://localhost:5000/product/${id}`;
+      fetch(url, {
+        method: 'PUT', // or 'POST'
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedProduct),
+      })
       .then(res => res.json())
-      .then(data => setProduct(data))
-    },[])
- */
+      .then(data => {
+        console.log('success', data);
+        alert('users added successfully!!!');
+        event.target.reset();
+        toast('updated success');
+      })
+    } 
+
   return (
     
     <div className="w-50 mx-auto my-4" >
       <h2 className="text-primary my-5" > Update Your Product Quantity  </h2>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control type="productName" placeholder="Product Name" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control type="productQuantity" placeholder="Product Quantity" />
-        </Form.Group>
-        <button className="btn btn-primary w-100">
-            Update Now
-          </button>
-      </Form>
+      <Form onSubmit={handleUpdateProduct} >
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Control
+                name="name"
+                type="text"
+                placeholder="Product Name"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicQuantity">
+              <Form.Control
+                name="quantity"
+                type="number"
+                placeholder="Product Quantity"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicDescription">
+              <Form.Control
+                name="description"
+                type="text"
+                placeholder="Short Description"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPrice">
+              <Form.Control
+                name="price"
+                type="number"
+                placeholder="Product Price"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicSupplier">
+              <Form.Control
+                name="supplier"
+                type="text"
+                placeholder="Supplier name"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPicture">
+              <Form.Control
+                name="picture"
+                type="text"
+                placeholder="Picture Url"
+              />
+            </Form.Group>
+            <button type="submit" className="btn btn-primary w-100">Update Product</button>
+            <ToastContainer></ToastContainer>
+          </Form>
     </div>
   );
 };

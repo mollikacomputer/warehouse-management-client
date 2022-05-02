@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Product from '../Product/Product';
 
+
 const Products = () => {
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
       fetch("http://localhost:5000/products")
         .then((response) => response.json())
-        .then((data) => setProducts(data));
+        .then((data) => setProducts(data.slice(0, 6)));
     });
     
     return (
