@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import Product from '../Product/Product';
 
-
-const Products = () => {
+const AllProducts = () => {
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
       fetch("http://localhost:5000/products")
         .then((response) => response.json())
-        .then((data) => setProducts(data.slice(0, 6)));
+        .then((data) => setProducts(data));
     });
     
     return (
         <div className="container">
-       <Link to='/allproducts' ><Button className='my-5' > Show All Products  </Button></Link>
-        
+        <h2 className='text-primary my-5' > Total Product Items : {products.length} </h2>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3" >
             {
                 products.map( product => <Product
@@ -28,8 +24,7 @@ const Products = () => {
         </div>
         
         </div>
-        
     );
 };
 
-export default Products;
+export default AllProducts;

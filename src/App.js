@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddProduct from './Components/AddProduct/AddProduct';
+import AllProducts from './Components/AllProducts/AllProducts';
 import Footer from './Components/Common/Footer/Footer';
 import Header from './Components/Common/Header/Header';
 import Home from './Components/Home/Home';
@@ -46,9 +47,13 @@ function App() {
           </RequireAuth>
         } >
         </Route>
+        <Route path='/allproducts' element={<AllProducts></AllProducts>} ></Route>
         <Route path='*' element={<NotFound></NotFound>} ></Route>
       </Routes>
-      <Footer></Footer>
+
+
+          <Footer></Footer>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,64L48,101.3C96,139,192,213,288,208C384,203,480,117,576,117.3C672,117,768,203,864,234.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </div>
   );
 }

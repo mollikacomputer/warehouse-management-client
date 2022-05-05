@@ -7,10 +7,9 @@ const CustomerReview = () => {
       <Card>
         <Card.Img variant="top roundedCircle " src="holder.js/100px180" />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>Anthony</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            This product is very good and delevery system or support system is awesome. I will buy after few months. 
           </Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
