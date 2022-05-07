@@ -9,7 +9,7 @@ const AddProduct = () => {
   const [products, setProducts] = useState([]);
   // load data from server to use UI
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('https://obscure-brook-05737.herokuapp.com/products')
     .then(res => res.json())
     .then(data => setProducts(data));
   },[]);
@@ -17,7 +17,7 @@ const AddProduct = () => {
     const proseed = window.confirm('Are you sure want to delete?');
     if(proseed){
       console.log('deleting products with id', id);
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://obscure-brook-05737.herokuapp.com/product/${id}`;
       fetch(url, {
         method:'DELETE'
       })
@@ -42,7 +42,7 @@ const AddProduct = () => {
     const product = {name, price, description, quantity, supplier, picture};
   
     // console.log(product);
-    fetch('http://localhost:5000/product', {
+    fetch('https://obscure-brook-05737.herokuapp.com/product', {
       method: 'POST', // or 'PUT'
       headers:{
         'Content-Type': 'application/json',

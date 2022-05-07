@@ -8,7 +8,7 @@ const Update = () => {
   const {id} = useParams();
   const [product, setProduct] = useState({});
   useEffect(()=>{
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://obscure-brook-05737.herokuapp.com/product/${id}`;
     fetch(url)
     .then(res => res.json())
     .then(data => setProduct(data))
@@ -25,7 +25,7 @@ const Update = () => {
       const updatedProduct = {name, quantity};
     
       // console.log(product);
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://obscure-brook-05737.herokuapp.com/product/${id}`;
       fetch(url, {
         method: 'PUT', // or 'POST'
         headers:{
@@ -61,7 +61,6 @@ const Update = () => {
                 placeholder="Product Quantity"
               />
             </Form.Group>
-
             <button type="submit" className="btn btn-primary w-100">Update Product</button>
             <ToastContainer></ToastContainer>
           </Form>

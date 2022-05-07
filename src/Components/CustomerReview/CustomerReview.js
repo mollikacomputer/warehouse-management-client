@@ -1,31 +1,11 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
-
 const CustomerReview = () => {
   return (
-    <div>
-      <Card>
-        <Card.Img variant="top roundedCircle " src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Anthony</Card.Title>
-          <Card.Text>
-            This product is very good and delevery system or support system is awesome. I will buy after few months. 
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
+    <div className="d-flex">
+      
     </div>
   );
 };
 
 export default CustomerReview;
-<Card style={{ width: "18rem" }}>
-  <Card.Img variant="top" src="holder.js/100px180" />
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-  </Card.Body>
-</Card>;
+
