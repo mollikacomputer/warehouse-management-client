@@ -3,6 +3,8 @@ import { Carousel } from "react-bootstrap";
 import bannerImg1 from '../../images/banner1.jpg';
 import bannerImg2 from '../../images/banner2.jpg';
 import bannerImg3 from '../../images/banner3.jpg';
+import './Banner.css';
+
 const Banner = () => {
     
   return (
@@ -14,9 +16,9 @@ const Banner = () => {
             src={bannerImg3}
             alt="First slide"
           />
-          <Carousel.Caption>
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <Carousel.Caption className="caption-bg">
+            <h5>Vagitable park</h5>
+            <p> Vagitable park is great and pure vagitable  </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -25,9 +27,9 @@ const Banner = () => {
             src={bannerImg1}
             alt="Second slide"
           />
-          <Carousel.Caption>
-            <h5>Second slide label</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <Carousel.Caption className="caption-bg">
+            <h5> All kinds of Sessional Frouts</h5>
+            <p>Pure all kinds of sessional fruits you can buy from us</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -36,10 +38,10 @@ const Banner = () => {
             src={bannerImg2}
             alt="Third slide"
           />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
+          <Carousel.Caption className="caption-bg">
+            <h5 > All kinds of Baby food </h5>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              100% halal baby food. Jurm and fat free food for baby.
             </p>
           </Carousel.Caption>
         </Carousel.Item>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Button, Form, ListGroup } from "react-bootstrap";
+import { Badge, Button, ListGroup } from "react-bootstrap";
 
 const Manage = () => {
   return (

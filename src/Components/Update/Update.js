@@ -17,12 +17,12 @@ const Update = () => {
     const handleUpdateProduct = event =>{
       event.preventDefault();
       const name = event.target.name.value;
-      const price = event.target.price.value;
-      const description = event.target.description.value;
       const quantity = event.target.quantity.value;
-      const supplier = event.target.supplier.value;
-      const picture = event.target.picture.value;
-      const updatedProduct = {name, price, description, quantity, supplier, picture};
+      // const price = event.target.price.value;
+      // const description = event.target.description.value;
+      // const supplier = event.target.supplier.value;
+      // const picture = event.target.picture.value;
+      const updatedProduct = {name, quantity};
     
       // console.log(product);
       const url = `http://localhost:5000/product/${id}`;
@@ -36,7 +36,7 @@ const Update = () => {
       .then(res => res.json())
       .then(data => {
         console.log('success', data);
-        alert('users added successfully!!!');
+        alert('users Update successfully!!!');
         event.target.reset();
         toast('updated success');
       })
@@ -61,34 +61,7 @@ const Update = () => {
                 placeholder="Product Quantity"
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicDescription">
-              <Form.Control
-                name="description"
-                type="text"
-                placeholder="Short Description"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPrice">
-              <Form.Control
-                name="price"
-                type="number"
-                placeholder="Product Price"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicSupplier">
-              <Form.Control
-                name="supplier"
-                type="text"
-                placeholder="Supplier name"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPicture">
-              <Form.Control
-                name="picture"
-                type="text"
-                placeholder="Picture Url"
-              />
-            </Form.Group>
+
             <button type="submit" className="btn btn-primary w-100">Update Product</button>
             <ToastContainer></ToastContainer>
           </Form>

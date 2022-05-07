@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddProduct from './Components/AddProduct/AddProduct';
 import AllProducts from './Components/AllProducts/AllProducts';
+import Blog from './Components/Blog/Blog';
 import Footer from './Components/Common/Footer/Footer';
 import Header from './Components/Common/Header/Header';
 import Home from './Components/Home/Home';
@@ -44,6 +45,12 @@ function App() {
         <Route path='/manage' element={
           <RequireAuth>
             <Manage></Manage>
+          </RequireAuth>
+        } >
+        </Route>
+        <Route path='/blog' element={
+          <RequireAuth>
+            <Blog></Blog>
           </RequireAuth>
         } >
         </Route>

@@ -3,6 +3,7 @@ import { Button, Form} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import './AddProduct.css'
 
 const AddProduct = () => {
   const [products, setProducts] = useState([]);
@@ -61,7 +62,22 @@ const AddProduct = () => {
 
   return (
     <div className="row">
-      <div className="col-12 col-md-6 mx-auto">
+            <div className="col-sm-12 col-md-8 manage-product">
+        
+        {
+              products.map( product => <li key={product.id}  >
+                {product.name} 
+                Price : ${product.price}
+                Quantity : {product.quantity} pcs
+
+                <img className="feature-img" src={product.picture} alt="picture" />
+
+              <Button onClick={() => handleProductDelete(product._id)} variant="light" >X</Button>
+              <Link to={`/update/${product._id}`} > <button className="btn btn-light" >Update</button> </Link>
+                </li> )
+            }
+        </div>
+      <div className="col-sm-12 col-md-4 mx-auto">
         <div className=" my-5">
           <h2 className="text-primary my-5"> Add Product </h2>
           <Form onSubmit={handleAddProduct} >
@@ -110,15 +126,9 @@ const AddProduct = () => {
             <button type="submit" className="btn btn-primary w-100">Add Product Now</button>
             <ToastContainer></ToastContainer>
           </Form>
-
-          {
-            products.map( product => <li key={product.id}  >id : {product.id} Product Name : {product.name} Price : {product.price}
-            <Button onClick={() => handleProductDelete(product._id)} variant="light" >X</Button>
-            <Link to={`/update/${product._id}`} > <button className="btn btn-light" >Update</button> </Link>
-              </li> )
-          }
         </div>
       </div>
+
     </div>
   );
 };
