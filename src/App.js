@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddProduct from './Components/AddProduct/AddProduct';
 import AllProducts from './Components/AllProducts/AllProducts';
-import Blog from './Components/Blog/Blog';
+import Blogs from './Components/Blogs/Blogs';
 import Footer from './Components/Common/Footer/Footer';
 import Header from './Components/Common/Header/Header';
 import Home from './Components/Home/Home';
@@ -48,9 +48,9 @@ function App() {
           </RequireAuth>
         } >
         </Route>
-        <Route path='/blog' element={
+        <Route path='/blogs' element={
           <RequireAuth>
-            <Blog></Blog>
+            <Blogs></Blogs>
           </RequireAuth>
         } >
         </Route>

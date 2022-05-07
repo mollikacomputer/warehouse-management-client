@@ -30,7 +30,7 @@ const NavBar = () => {
               </Nav.Link>
               <Nav.Link>{user?.displayName}</Nav.Link>
               {/* <Nav.Link>{user?.displayName}</Nav.Link> */}
-              <Nav.Link as={Link} eventKey="link-5" to="/blog">Blog</Nav.Link>
+              <Nav.Link as={Link} eventKey="link-5" to="/blogs">Blog</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
