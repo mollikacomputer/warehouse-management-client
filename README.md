@@ -11,12 +11,19 @@ Latest Technology Use for this website:
 * Firebase use to create manage authentication and manage user.
 
 Website Live Link given below:
+netlify link
+
+[a link] (https://heroic-moxie-7c88c8.netlify.app/)
+
 Client Side Github Live link
+
 [a link] (https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-mollikacomputer)
 Server Side Github Link
+
 [a link] (https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-mollikacomputer)
 
 Server Side Live Link
+
 [a link] (https://obscure-brook-05737.herokuapp.com/products)
 [a link] (https://obscure-brook-05737.herokuapp.com/)
 
